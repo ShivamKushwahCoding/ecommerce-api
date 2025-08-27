@@ -30,17 +30,23 @@ class AuthController extends Controller
     // Login user
     public function login(Request $request)
     {
+        $user = User::where('email', $request->email)->first();
+
         $request->validate([
             'email'    => 'required|email',
             'password' => 'required',
         ]);
 
-        $user = User::where('email', $request->email)->first();
-
         if (! $user || ! Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages([
                 'email' => ['Invalid credentials.'],
             ]);
+        }
+
+        if (! $user->is_active) {
+            return response()->json([
+                'error' => 'Your account is not activated by admin yet.',
+            ], 403);
         }
 
         $token = $user->createToken('api_token')->plainTextToken;
