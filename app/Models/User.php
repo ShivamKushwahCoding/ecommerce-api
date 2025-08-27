@@ -1,8 +1,6 @@
 <?php
-
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -40,6 +38,25 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
+        'password'          => 'hashed',
     ];
+
+    // Role relationship
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    // Check if user has role
+    public function hasRole(string $roleName): bool
+    {
+        return $this->role && $this->role->name === $roleName;
+    }
+
+    // Check if user has permission
+    public function hasPermission(string $permissionName): bool
+    {
+        return $this->role
+        && $this->role->permissions->contains('name', $permissionName);
+    }
 }
