@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('upload_tables', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('sales_report', function (Blueprint $table) {
+            $table->string('is_shopsy_order', 10)->nullable()->change();
         });
     }
 
@@ -22,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('upload_tables');
+        Schema::table('sales_report', function (Blueprint $table) {
+            //
+        });
     }
 };

@@ -6,6 +6,9 @@ use App\Http\Controllers\Api\Admin\RolePermissionController;
 use App\Http\Controllers\Api\Admin\UserController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\HealthController;
+use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\ImportController;
+use App\Http\Controllers\MappingController;
 use Illuminate\Support\Facades\Route;
 
 // Health
@@ -32,6 +35,22 @@ Route::middleware('auth:sanctum')->group(function () {
         // User role & activation management
         Route::put('users/{user}/role', [UserController::class, 'assignRole']);
         Route::put('users/{user}/activate', [UserController::class, 'setActive']);
+
+        //Upload file
+        Route::post('/files/upload', [FileUploadController::class, 'upload']);
+        Route::get('/files/{id}/headers', [FileUploadController::class, 'getHeaders']);
+
+        //Mapping columns
+        Route::prefix('mappings')->group(function () {
+            Route::post('/', [MappingController::class, 'store']);
+            Route::put('/{id}', [MappingController::class, 'update']);
+            Route::get('/{id}', [MappingController::class, 'show']);
+            Route::delete('/{id}', [MappingController::class, 'destroy']);
+        });
+
+        //import data from excel to DB
+        Route::post('/import/{file_id}', [ImportController::class, 'import']);
+        Route::get('/import/status/{job_id}', [ImportController::class, 'status']);
 
     });
 });
