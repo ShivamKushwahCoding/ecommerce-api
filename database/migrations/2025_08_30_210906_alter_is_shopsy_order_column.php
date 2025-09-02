@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->boolean('is_active')->default(false);
+        Schema::table('cashback_report', function (Blueprint $table) {
+            $table->string('is_shopsy_order', 10)->nullable()->change();
         });
     }
 
@@ -21,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('cashback_report', function (Blueprint $table) {
             //
         });
     }
