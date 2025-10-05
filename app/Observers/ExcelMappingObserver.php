@@ -2,7 +2,6 @@
 namespace App\Observers;
 
 use App\Models\ExcelMapping;
-use Illuminate\Support\Facades\Cache;
 
 class ExcelMappingObserver
 {
@@ -11,7 +10,7 @@ class ExcelMappingObserver
      */
     public function created(ExcelMapping $excelMapping): void
     {
-        Cache::put('admin_dashboard');
+        // Cache::put('admin_dashboard');
     }
 
     /**
@@ -19,7 +18,7 @@ class ExcelMappingObserver
      */
     public function updated(ExcelMapping $excelMapping): void
     {
-        Cache::put('admin_dashboard');
+        // Cache::put('admin_dashboard');
     }
 
     /**
@@ -27,7 +26,7 @@ class ExcelMappingObserver
      */
     public function deleted(ExcelMapping $excelMapping): void
     {
-        Cache::put('admin_dashboard');
+        // Cache::put('admin_dashboard');
     }
 
     /**

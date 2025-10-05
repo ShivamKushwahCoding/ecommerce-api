@@ -2,7 +2,6 @@
 namespace App\Observers;
 
 use App\Models\Permission;
-use Illuminate\Support\Facades\Cache;
 
 class PermissionObserver
 {
@@ -11,7 +10,7 @@ class PermissionObserver
      */
     public function created(Permission $permission): void
     {
-        Cache::put('admin_dashboard');
+        // Cache::put('admin_dashboard');
     }
 
     /**
@@ -19,7 +18,7 @@ class PermissionObserver
      */
     public function updated(Permission $permission): void
     {
-        Cache::put('admin_dashboard');
+        // Cache::put('admin_dashboard');
     }
 
     /**
@@ -27,7 +26,7 @@ class PermissionObserver
      */
     public function deleted(Permission $permission): void
     {
-        Cache::put('admin_dashboard');
+        // Cache::put('admin_dashboard');
     }
 
     /**

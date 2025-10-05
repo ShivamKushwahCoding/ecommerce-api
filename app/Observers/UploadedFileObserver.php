@@ -2,7 +2,6 @@
 namespace App\Observers;
 
 use App\Models\UploadedFile;
-use Illuminate\Support\Facades\Cache;
 
 class UploadedFileObserver
 {
@@ -11,7 +10,7 @@ class UploadedFileObserver
      */
     public function created(UploadedFile $uploadedFile): void
     {
-        Cache::put('admin_dashboard');
+        // Cache::put('admin_dashboard');
     }
 
     /**
@@ -19,7 +18,7 @@ class UploadedFileObserver
      */
     public function updated(UploadedFile $uploadedFile): void
     {
-        Cache::put('admin_dashboard');
+        // Cache::put('admin_dashboard');
     }
 
     /**
@@ -27,7 +26,7 @@ class UploadedFileObserver
      */
     public function deleted(UploadedFile $uploadedFile): void
     {
-        Cache::put('admin_dashboard');
+        // Cache::put('admin_dashboard');
     }
 
     /**

@@ -2,7 +2,6 @@
 namespace App\Observers;
 
 use App\Models\Role;
-use Illuminate\Support\Facades\Cache;
 
 class RoleObserver
 {
@@ -11,7 +10,7 @@ class RoleObserver
      */
     public function created(Role $role): void
     {
-        Cache::put('admin_dashboard');
+        // Cache::put('admin_dashboard');
     }
 
     /**
@@ -19,7 +18,7 @@ class RoleObserver
      */
     public function updated(Role $role): void
     {
-        Cache::put('admin_dashboard');
+        // Cache::put('admin_dashboard');
     }
 
     /**
@@ -27,7 +26,7 @@ class RoleObserver
      */
     public function deleted(Role $role): void
     {
-        Cache::put('admin_dashboard');
+        // Cache::put('admin_dashboard');
     }
 
     /**
