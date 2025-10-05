@@ -23,7 +23,7 @@ class PermissionSeeder extends Seeder
         // Assign permissions to roles
         $adminRole    = Role::where('name', 'admin')->first();
         $managerRole  = Role::where('name', 'manager')->first();
-        $customerRole = Role::where('name', 'customer')->first();
+        $customerRole = Role::where('name', 'client')->first();
 
         if ($adminRole) {
             $adminRole->permissions()->sync(Permission::all()->pluck('id'));

@@ -20,5 +20,16 @@ class UserSeeder extends Seeder
                 'role_id'  => $adminRole ? $adminRole->id : null,
             ]
         );
+
+        $clientRole = Role::where('name', 'client')->first();
+
+        User::firstOrCreate(
+            ['email' => 'admin@ecom.test'],
+            [
+                'name'     => 'Super Admin',
+                'password' => Hash::make('password123'),
+                'role_id'  => $clientRole ? $clientRole->id : null,
+            ]
+        );
     }
 }
