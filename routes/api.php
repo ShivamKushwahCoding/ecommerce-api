@@ -22,9 +22,9 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/me', [AuthController::class, 'me']);
+    Route::get('/dashboard', [DashboardController::class, 'index']);
     // Admin-only
     Route::middleware('role:admin')->prefix('admin')->group(function () {
-        Route::get('/dashboard', [DashboardController::class, 'index']);
         Route::apiResource('roles', RoleController::class);
         Route::apiResource('permissions', PermissionController::class);
         Route::apiResource('users', UserController::class);
@@ -45,6 +45,7 @@ Route::middleware('auth:sanctum')->group(function () {
         //Mapping columns
         Route::prefix('mappings')->group(function () {
             Route::post('/', [MappingController::class, 'store']);
+            Route::get('/list', [MappingController::class, 'index']);
             Route::put('/{id}', [MappingController::class, 'update']);
             Route::get('/{id}', [MappingController::class, 'show']);
             Route::delete('/{id}', [MappingController::class, 'destroy']);

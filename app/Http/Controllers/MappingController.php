@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class MappingController extends Controller
 {
+    public function index()
+    {
+        return ExcelMapping::get();
+    }
+
     public function store(Request $request)
     {
         $validated = $request->validate([

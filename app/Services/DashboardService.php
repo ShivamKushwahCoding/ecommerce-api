@@ -38,10 +38,10 @@ class DashboardService
                 'returns_total_count'           => SalesReport::sumOfColumn('item_quantity', 'event_sub_type', 'Return'),
                 'returns_cancelled_count'       => SalesReport::sumOfColumn('item_quantity', 'event_sub_type', 'Return Cancellation'),
                 'cancellations_count'           => SalesReport::sumOfColumn('item_quantity', 'event_sub_type', 'Cancellation'),
-                'sales_total_order_count'       => SalesReport::countDistinctOrderWhereEventSubTypeIn('order_id', 'event_sub_type', ['Sale']),
-                'returns_total_order_count'     => SalesReport::countDistinctOrderWhereEventSubTypeIn('order_id', 'event_sub_type', ['Return']),
-                'returns_cancelled_order_count' => SalesReport::countDistinctOrderWhereEventSubTypeIn('order_id', 'event_sub_type', ['Return Cancellation']),
-                'cancellations_order_count'     => SalesReport::countDistinctOrderWhereEventSubTypeIn('order_id', 'event_sub_type', ['Cancellation']),
+                'sales_total_order_count'       => SalesReport::countDistinctOrderWhereEventSubTypeIn('order_id', 'event_sub_type', 'Sale'),
+                'returns_total_order_count'     => SalesReport::countDistinctOrderWhereEventSubTypeIn('order_id', 'event_sub_type', 'Return'),
+                'returns_cancelled_order_count' => SalesReport::countDistinctOrderWhereEventSubTypeIn('order_id', 'event_sub_type', 'Return Cancellation'),
+                'cancellations_order_count'     => SalesReport::countDistinctOrderWhereEventSubTypeIn('order_id', 'event_sub_type', 'Cancellation'),
             ];
         });
     }

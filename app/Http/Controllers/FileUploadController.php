@@ -13,6 +13,9 @@ class FileUploadController extends Controller
     {
         $request->validate([
             'file' => 'required|mimes:xlsx,xls,csv',
+            // 'clientId' => 'required|integer|exists:users,id',
+            // 'channelId' => 'required|integer|exists:channels,id',
+            // 'companyId' => 'required|integer|exists:companies,id',
         ]);
 
         $file         = $request->file('file');
