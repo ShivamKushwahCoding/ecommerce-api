@@ -6,10 +6,12 @@ use App\Http\Controllers\Api\Admin\RoleController;
 use App\Http\Controllers\Api\Admin\RolePermissionController;
 use App\Http\Controllers\Api\Admin\UserController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\Client\OrderWiseReport;
 use App\Http\Controllers\Api\HealthController;
 use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\MappingController;
+use App\Http\Controllers\SkuController;
 use Illuminate\Support\Facades\Route;
 
 // Health
@@ -55,5 +57,12 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/import/{file_id}', [ImportController::class, 'import']);
         Route::get('/import/status/{job_id}', [ImportController::class, 'status']);
 
+    });
+
+    // Client-only
+    Route::middleware('role:client')->prefix('client')->group(function () {
+        Route::get('/orderWiseReport', [OrderWiseReport::class, 'index']);
+        Route::get('/skus', [SkuController::class, 'index']);
+        Route::get('/requiredSkus', [SkuController::class, 'requiredSkus']);
     });
 });
