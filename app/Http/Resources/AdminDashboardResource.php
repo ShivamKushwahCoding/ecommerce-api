@@ -20,6 +20,7 @@ class AdminDashboardResource extends JsonResource
             'permissions'    => $this->permissions,
             'files_uploaded' => $this->files_uploaded,
             'mappings'       => $this->mappings,
+            // 'returns_summary'=> $this->returns_summary,
         ];
     }
 }
