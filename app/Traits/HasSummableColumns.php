@@ -30,7 +30,6 @@ trait HasSummableColumns
     {
         return static::query()
             ->where($conditionColumn, $conditionValue)
-            ->distinct()
             ->count($column);
     }
 }
