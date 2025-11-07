@@ -46,6 +46,7 @@ class DashboardController extends Controller
                 'total_expense'=>$totals['total_expense'],
                 'net_profit'=>$totals['net_profit'],
                 'gross_profit'=>$totals['gross_profit'],
+                'total_taxes'=>$totals['total_taxes'],
 
                 // Payment settlement overview
                 'net_settlement_amount'=> $totals['total_bank_settlement'],
