@@ -62,6 +62,7 @@ Route::middleware('auth:sanctum')->group(function () {
     // Client-only
     Route::middleware('role:client')->prefix('client')->group(function () {
         Route::get('/orderWiseReport', [OrderWiseReport::class, 'index']);
+        Route::get('/orderWiseReport/download', [OrderWiseReport::class, 'downloadReport']);
         Route::get('/skus', [SkuController::class, 'index']);
         Route::get('/requiredSkus', [SkuController::class, 'requiredSkus']);
     });
