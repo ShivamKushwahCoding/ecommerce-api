@@ -16,8 +16,12 @@ class OrderWiseReport extends Controller
 {
     public function index(Request $request, SalesDataService $service)
     {        
-        // $data = $service->getSalesList($request->get('perPage', 100));
-        // return response()->json($data);
+        $data = $service->getSalesList($request->get('perPage', 100));
+        return response()->json($data);
+    }
+
+    public function downloadReport(Request $request, SalesDataService $service)
+    {        
         $filePath = $service->exportSalesListToExcel($request->all());
 
         return response()->download($filePath)->deleteFileAfterSend(true);
